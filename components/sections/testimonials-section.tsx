@@ -59,7 +59,7 @@ export function TestimonialsSection() {
   }, [])
 
   return (
-    <section id="testimonials" ref={sectionRef} className="py-16 md:py-24 bg-gray-50 px-4 md:px-6">
+    <section id="testimonials" ref={sectionRef} className="py-10 md:py-15 bg-gray-50 px-4 md:px-6">
       <div className="container text-center">
         <h2
           className={cn(

@@ -54,7 +54,7 @@ export function BlogSection() {
   }, [])
 
   return (
-    <section id="blog" ref={sectionRef} className="py-16 md:py-24 bg-white px-4 md:px-6">
+    <section id="blog" ref={sectionRef} className="py-16 md:py-16 bg-white px-4 md:px-6">
       <div className="container text-center">
         <h2
           className={cn(

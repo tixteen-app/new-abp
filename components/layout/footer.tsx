@@ -5,7 +5,7 @@ import { Mail, Phone, MapPin } from "lucide-react"
 
 export function Footer() {
   return (
-    <footer id="footer" className="bg-primary text-white py-12 px-4 md:px-6">
+    <footer id="footer" className="bg-primary text-white py-8 px-4 md:px-6">
       <div className="container grid grid-cols-1 md:grid-cols-4 gap-8">
         <div className="space-y-4">
           <Link href="/" className="flex items-center space-x-2">

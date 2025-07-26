@@ -36,7 +36,7 @@ export function ContactCTA() {
     <section
       id="contact"
       ref={sectionRef}
-      className="py-16 md:py-24 bg-gray-100 relative overflow-hidden px-4 md:px-6" // Changed background to light gray
+      className="py-16 md:py-18 bg-gray-100 relative overflow-hidden px-4 md:px-6" // Changed background to light gray
     >
       {/* Subtle background pattern/overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent z-0"></div>
@@ -72,7 +72,7 @@ export function ContactCTA() {
             </p>
             <Button
               size="lg"
-              variant="accent"
+           
               className={cn(
                 "px-8 py-3 text-lg font-semibold shadow-lg hover:scale-105 transition-transform duration-300",
                 isVisible ? "animate-fade-in-up delay-400" : "opacity-0",

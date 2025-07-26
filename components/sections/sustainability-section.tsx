@@ -50,7 +50,7 @@ export function SustainabilitySection() {
   }, [])
 
   return (
-    <section id="sustainability" ref={sectionRef} className="py-16 md:py-24 bg-white px-4 md:px-6">
+    <section id="sustainability" ref={sectionRef} className="py-2 md:py-20 bg-white px-4 md:px-6">
       <div className="container text-center">
         <h2
           className={cn(
@@ -86,7 +86,7 @@ export function SustainabilitySection() {
             </div>
           ))}
         </div>
-        <h3
+        {/* <h3
           className={cn(
             "text-2xl font-bold text-primary mt-16 mb-8",
             isVisible ? "animate-fade-in-up delay-400" : "opacity-0",
@@ -121,7 +121,7 @@ export function SustainabilitySection() {
             height={80}
             className="object-contain"
           />
-        </div>
+        </div> */}
       </div>
     </section>
   )

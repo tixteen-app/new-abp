@@ -18,24 +18,24 @@ export function Header() {
   ]
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-primary text-white shadow-lg transition-all duration-300">
+    <header className="sticky top-0 z-50 w-full bg-white text-black shadow-lg transition-all duration-300">
       <div className="container flex h-16 items-center justify-between px-4 md:px-6">
-        <Link href="/" className="flex items-center space-x-2 font-bold text-2xl text-white">
+        <Link href="/" className="flex items-center space-x-2 font-bold text-2xl text-black">
           <Image
-            src="/images/abg-logo.png"
+            src="/ABG_Logo.png"
             alt="ABG PRO PACK Logo"
             width={100} // Adjust width as needed
             height={40} // Adjust height as needed
             className="object-contain"
-          />
-          <span className="text-white">PRO PACK</span> {/* Added PRO PACK text */}
+          /> 
+          {/* <span className="text-black">PRO PACK</span>  */}
         </Link>
         <nav className="hidden lg:flex items-center space-x-6">
           {navLinks.map((link) => (
             <Link
               key={link.name}
               href={link.href}
-              className="flex items-center text-sm font-medium text-white hover:text-accent transition-colors duration-200 group"
+              className="flex items-center text-md font-medium text-black hover:text-accent transition-colors duration-200 group"
             >
               {link.name}
               <ChevronRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -45,7 +45,7 @@ export function Header() {
         <div className="lg:hidden">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="text-white hover:text-accent focus:outline-none focus:ring-2 focus:ring-accent"
+            className="text-black hover:text-accent focus:outline-none focus:ring-2 focus:ring-accent"
             aria-label="Toggle navigation"
           >
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -64,7 +64,7 @@ export function Header() {
             <Link
               key={link.name}
               href={link.href}
-              className="flex items-center text-base font-medium text-white hover:text-accent transition-colors duration-200"
+              className="flex items-center text-base font-medium text-black hover:text-accent transition-colors duration-200"
               onClick={() => setIsOpen(false)}
             >
               {link.name}
