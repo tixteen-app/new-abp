@@ -48,15 +48,15 @@ export function Footer() {
           <div className="flex flex-col space-y-2 text-sm text-gray-300">
             <div className="flex items-center space-x-2">
               <Mail className="h-4 w-4 text-accent" />
-              <span>info@abgpropack.com</span>
+              <span>abg.propack@gmail.com</span>
             </div>
             <div className="flex items-center space-x-2">
               <Phone className="h-4 w-4 text-accent" />
-              <span>+91 123 456 7890</span>
+              <span>+91-966 727 8098</span>
             </div>
             <div className="flex items-start space-x-2">
               <MapPin className="h-4 w-4 text-accent mt-1" />
-              <span>123 Packaging Lane, Industrial Area, Bharat</span>
+              <span>86, Phase 1, HSIIDC, Kundli, Haryana-131028</span>
             </div>
           </div>
         </div>

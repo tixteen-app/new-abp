@@ -13,7 +13,7 @@ const getBlogPost = (slug: string) => {
   const posts = {
     "future-sustainable-packaging": {
       title: "The Future of Sustainable Packaging",
-      author: "Dr. Priya Sharma",
+      author: "Dr. Priya Sharma",   
       date: "July 20, 2025",
       readTime: "6 min read",
       category: "Sustainability",
