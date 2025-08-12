@@ -5,9 +5,12 @@ import Link from "next/link"
 import Image from "next/image" // Import Image component
 import { Menu, X, ChevronRight } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 
 export function Header() {
   const [isOpen, setIsOpen] = React.useState(false)
+  const [scrolled, setScrolled] = React.useState(false)
+  const { elementRef, isVisible } = useScrollAnimation({ threshold: 0.1 })
 
   const navLinks = [
     { name: "Catalog", href: "/catalog" },
@@ -17,61 +20,96 @@ export function Header() {
     { name: "Resources", href: "/resources" }, 
     { name: "Career", href: "/career" }, 
     { name: "contact", href: "/contact" }, 
-
-    //  Changed from Career to Contact Us
   ]
 
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
-    <header className="sticky top-0 z-50 w-full bg-white text-black shadow-lg transition-all duration-300">
+    <header 
+      ref={elementRef}
+      className={cn(
+        "sticky top-0 z-50 w-full transition-all duration-500",
+        scrolled 
+          ? "bg-white/95 backdrop-blur-md shadow-lg text-black" 
+          : "bg-white/80 backdrop-blur-sm text-black"
+      )}
+    >
       <div className="container flex h-16 items-center justify-between px-4 md:px-6">
-        <Link href="/" className="flex items-center space-x-2 font-bold text-2xl text-black">
+        <Link 
+          href="/" 
+          className={cn(
+            "flex items-center space-x-2 font-bold text-2xl text-black hover-scale transition-transform duration-300",
+            isVisible ? "animate-fade-in-left" : "opacity-0"
+          )}
+        >
           <Image
             src="/ABG_Logo.png"
             alt="ABG PRO PACK Logo"
-            width={100} // Adjust width as needed
-            height={40} // Adjust height as needed
-            className="object-contain"
-          /> 
-          {/* <span className="text-black">PRO PACK</span>  */}
+            width={100}
+            height={40}
+            className="object-contain hover-rotate"
+          />
         </Link>
-        <nav className="hidden lg:flex items-center space-x-6">
-          {navLinks.map((link) => (
+        <nav className={cn(
+          "hidden lg:flex items-center space-x-6",
+          isVisible ? "animate-fade-in-right" : "opacity-0"
+        )}>
+          {navLinks.map((link, index) => (
             <Link
               key={link.name}
               href={link.href}
-              className="flex items-center text-md font-medium text-black hover:text-accent transition-colors duration-200 group"
+              className={cn(
+                "flex items-center text-md font-medium text-black hover:text-accent transition-all duration-300 group relative overflow-hidden",
+                "hover:scale-105"
+              )}
+              style={{ animationDelay: `${index * 100}ms` }}
             >
-              {link.name}
+              <span className="relative z-10">{link.name}</span>
+              <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></div>
             </Link>
           ))}
         </nav>
-        <div className="lg:hidden">
+        <div className={cn(
+          "lg:hidden",
+          isVisible ? "animate-fade-in-right delay-600" : "opacity-0"
+        )}>
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="text-black hover:text-accent focus:outline-none focus:ring-2 focus:ring-accent"
+            className="text-black hover:text-accent focus:outline-none focus:ring-2 focus:ring-accent transition-all duration-300 hover:scale-110"
             aria-label="Toggle navigation"
           >
-            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            {isOpen ? <X className="h-6 w-6 animate-rotate-in" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
       </div>
       {/* Mobile Menu */}
       <div
         className={cn(
-          "lg:hidden overflow-hidden transition-all duration-300 ease-in-out",
+          "lg:hidden overflow-hidden transition-all duration-500 ease-in-out",
           isOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0",
         )}
       >
-        <nav className="flex flex-col items-center space-y-4 py-4 bg-primary/90 backdrop-blur-sm">
-          {navLinks.map((link) => (
+        <nav className="flex flex-col items-center space-y-4 py-4 bg-primary/95 backdrop-blur-md">
+          {navLinks.map((link, index) => (
             <Link
               key={link.name}
               href={link.href}
-              className="flex items-center text-base font-medium text-black hover:text-accent transition-colors duration-200"
+              className={cn(
+                "flex items-center text-base font-medium text-black hover:text-accent transition-all duration-300 hover:scale-105 group",
+                isOpen ? "animate-fade-in-up" : "opacity-0"
+              )}
+              style={{ animationDelay: `${index * 100}ms` }}
               onClick={() => setIsOpen(false)}
             >
-              {link.name}
-              <ChevronRight className="ml-1 h-4 w-4" />
+              <span className="relative z-10">{link.name}</span>
+              <ChevronRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
           ))}
         </nav>
