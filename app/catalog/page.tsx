@@ -117,25 +117,25 @@ export default function CatalogPage() {
     {
       name: "Flexible Laminated Tubes",
       description: "High-quality tubes for cosmetics, pharmaceuticals, and food products",
-      image: "/placeholder.svg?height=300&width=400",
+      image: "https://picsum.photos/id/6/400/300",
       products: ["Cosmetic Tubes", "Pharma Tubes", "Food Grade Tubes", "Industrial Tubes"],
     },
     {
       name: "Printed Labels",
       description: "Custom-designed labels with high-resolution printing",
-      image: "/placeholder.svg?height=300&width=400",
+      image: "https://picsum.photos/id/7/400/300",
       products: ["Product Labels", "Branding Labels", "Barcode Labels", "Security Labels"],
     },
     {
       name: "Custom Packaging",
       description: "Tailored packaging solutions for unique requirements",
-      image: "/placeholder.svg?height=300&width=400",
+      image: "https://picsum.photos/id/8/400/300",
       products: ["Boxes", "Pouches", "Containers", "Specialty Packaging"],
     },
     {
       name: "Sustainable Solutions",
       description: "Eco-friendly packaging options for environmentally conscious brands",
-      image: "/placeholder.svg?height=300&width=400",
+      image: "https://picsum.photos/id/9/400/300",
       products: ["Biodegradable Tubes", "Recyclable Labels", "Eco Pouches", "Green Packaging"],
     },
   ]
@@ -188,7 +188,30 @@ export default function CatalogPage() {
     }
   ]
 
-  const labelOptions = {
+  const labelOptions = [
+    {
+      title: "Paper Labels",
+      description: "Eco-friendly paper labels with various finishes",
+      image: "https://picsum.photos/id/10/300/200"
+    },
+    {
+      title: "Film/Synthetic Labels",
+      description: "Durable synthetic labels for challenging environments",
+      image: "https://picsum.photos/id/11/300/200"
+    },
+    {
+      title: "Premium & Specialty Labels",
+      description: "Foil, clear, and other premium label options",
+      image: "https://picsum.photos/id/12/300/200"
+    },
+    {
+      title: "Shrink Sleeves",
+      description: "360° shrink sleeves for full product coverage",
+      image: "https://picsum.photos/id/13/300/200"
+    }
+  ]
+
+  const labelDetails = {
     materials: "Paper, Film / Synthetic, Specialty & Premium Labels (Foil, Clear, Shrink Sleeves, etc.), etc.",
     printing: "Flexo with 8 color option",
     finish: "Gloss / Semi-gloss / Matte / Satin / Textured / Metalized",
@@ -261,25 +284,42 @@ export default function CatalogPage() {
               Label <span className="text-accent">Options</span>
             </h2>
             
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+              {labelOptions.map((option, index) => (
+                <div key={index} className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                  <div className="relative h-48 w-full mb-4">
+                    <Image
+                      src={option.image}
+                      alt={option.title}
+                      fill
+                      className="object-cover rounded-md"
+                    />
+                  </div>
+                  <h3 className="text-xl font-semibold text-primary mb-2">{option.title}</h3>
+                  <p className="text-gray-700">{option.description}</p>
+                </div>
+              ))}
+            </div>
+            
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="bg-white p-6 rounded-lg shadow-md">
                 <h3 className="text-xl font-semibold text-primary mb-4">Material Types</h3>
-                <p className="text-gray-700">{labelOptions.materials}</p>
+                <p className="text-gray-700">{labelDetails.materials}</p>
               </div>
               
               <div className="bg-white p-6 rounded-lg shadow-md">
                 <h3 className="text-xl font-semibold text-primary mb-4">Printing</h3>
-                <p className="text-gray-700">{labelOptions.printing}</p>
+                <p className="text-gray-700">{labelDetails.printing}</p>
               </div>
               
               <div className="bg-white p-6 rounded-lg shadow-md">
                 <h3 className="text-xl font-semibold text-primary mb-4">Finish</h3>
-                <p className="text-gray-700">{labelOptions.finish}</p>
+                <p className="text-gray-700">{labelDetails.finish}</p>
               </div>
               
               <div className="bg-white p-6 rounded-lg shadow-md">
                 <h3 className="text-xl font-semibold text-primary mb-4">Size Range</h3>
-                <p className="text-gray-700">{labelOptions.size}</p>
+                <p className="text-gray-700">{labelDetails.size}</p>
               </div>
             </div>
           </div>
@@ -296,7 +336,7 @@ export default function CatalogPage() {
                 <Card key={index} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
                   <div className="relative h-64 w-full">
                     <Image
-                      src={category.image || "/placeholder.svg"}
+                      src={category.image}
                       alt={category.name}
                       fill
                       className="object-cover"
